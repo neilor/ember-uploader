@@ -36,11 +36,14 @@ export default Ember.Object.extend(Ember.Evented, {
   setupFormData: function(files, extra) {
     var formData = new FormData();
 
+    console.log extra
     for (var prop in extra) {
+      console.log prop
       if (extra.hasOwnProperty(prop)) {
         formData.append(this.toNamespacedParam(prop), extra[prop]);
       }
     }
+    console.log formData
 
     // if is a array of files ...
     if (Ember.isArray(files)) {
