@@ -23,19 +23,9 @@ export default Uploader.extend({
     set(this, 'isUploading', true);
 
     return this.sign(file, data).then(function(json) {
-      var url;
+      var url = json.url;
 
-      if (json.endpoint) {
-        url = json.endpoint;
-        delete json.endpoint;
-      } else if (json.region) {
-        url = "//s3-" + json.region + ".amazonaws.com/" + json.bucket;
-        delete json.region;
-      } else {
-        url = "//" + json.bucket + ".s3.amazonaws.com";
-      }
-
-      var formData = self.setupFormData(file, json);
+      var formData = self.setupFormData(file, json.fields);
 
       return self.ajax(url, formData);
     });
