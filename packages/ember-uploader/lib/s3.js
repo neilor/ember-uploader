@@ -23,7 +23,7 @@ export default Uploader.extend({
     set(this, 'isUploading', true);
 
     return this.sign(file, data).then(function(json) {
-      var url = json.url;
+      var url = json.upload_url;
 
       var formData = self.setupFormData(file, json.fields);
 
