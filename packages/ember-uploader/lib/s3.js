@@ -49,6 +49,7 @@ export default Uploader.extend({
 
     return new Ember.RSVP.Promise(function(resolve, reject) {
       settings.success = function(data) {
+        console.log(data);
         Ember.run(null, resolve, self.didSign(data));
       };
 
